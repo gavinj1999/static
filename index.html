@@ -1,0 +1,499 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evri Courier Hourly Pay Calculator - courierforum.uk</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style type="text/css">
+        .split {
+            height: 100%;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            padding-top: 10px;
+        }
+
+        .left {
+            left: 10;
+            background-color: #fff;
+        }
+
+        .right {
+            right: -30;
+            background-color: fff;
+        }
+
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: right;
+        }
+
+        .selectt {
+            color: #000;
+            padding: 1px;
+            display: none;
+            margin-top: 0px;
+            width: 90%;
+            background: white
+        }
+
+        .selectt2 {
+            color: #000;
+            padding: 1px;
+            margin-top: 0px;
+            width: 80%;
+            background: white
+        }
+
+        label {
+            margin-right: 20px;
+        }
+
+        input[type=text] {
+            border: 2px solid grey;
+        }
+    </style>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js">
+    </script>
+
+    <script type="text/javascript">
+        function calcform() {
+            console.log('fdsfad')
+            with (document.form1)
+            if (+number13.value < 40) {
+                alert("Your STANDARD parcel rate doesn't look right. \n EXAMPLE: If your rate is £1.06 then enter as 106");
+                return false;
+            }
+            { mileage.value = +number1.value + +number2.value + +number3.value + +number4.value }
+            { travelt.value = ((+number20.value * 60) + +number21.value) + ((+number22.value * 60) + +number23.value) + ((+number24.value * 60) + +number25.value) }
+            { pstc.value = Math.round(+number7.value / 100 * 6) }
+            { spcp.value = Math.round(+number7.value / 100 * 60) }
+            { pc.value = Math.round(+number7.value / 100 * 17) }
+            { sc.value = Math.round(+number7.value / 100 * 15) }
+            { hc.value = Math.round(+number7.value / 100 * 2) }
+            { cp.value = +number16.value }
+            { tdc.value = +pstc.value + +spcp.value + +pc.value + +sc.value + +hc.value }
+            { spc.value = +spcp.value + (+number7.value - +tdc.value) }
+            { atdc.value = +pstc.value + +spc.value + +pc.value + +sc.value + +hc.value }
+            { slte.value = Math.round(+number7.value / 3) }
+            { dt.value = (+number14.value * 60) + +number15.value }
+            { wt.value = +travelt.value + +slte.value + +dt.value }
+            { rpst.value = Math.round(+number13.value / 100 * 60) }
+            { rsp.value = Math.round(+number13.value / 100 * 69) }
+            { rp.value = Math.round(+number13.value / 100 * 75) }
+            { rc.value = Math.round(+number13.value / 100 * 80) }
+            if (+number13.value > 100) {
+                rh.value = +number13.value;
+            } else {
+                rh.value = 100;
+            }
+            { ex.value = Math.round((((+mileage.value / 100) * 50) + 1) * 100) }
+            { pp.value = (+pstc.value * +rpst.value) + (+spcp.value * +rsp.value) + (+pc.value * +rp.value) + (+sc.value * +number13.value) + (+hc.value * +rh.value) + (+cp.value * +rc.value) }
+            { pph.value = ((((+pp.value - +ex.value) / +wt.value) * 60) / 100).toFixed(2) }
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <div class="container">
+        <h2>Evri SE+ Pay Per Hour Calculator (ALPHA)</h2>
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-sm-12 col-xs-12">
+                <form name="form1" action="">
+
+                    <div class="card my-4">
+                        <div class="card-body">
+                            <div class="p-2 bg-body-secondary rounded-2">
+
+                                <h5 class="card-title">
+                                    SECTION 1 - TRAVEL
+                                </h5>
+                            </div>
+
+                            <div class="card-text">
+                                <table class="table">
+                                    <tr>
+                                        <td>
+                                            How many miles did you travel to the depot? (Leave BLANK if SOLUS)
+                                        <td>
+                                            <input  size="2"class="form-control" type="number" id="number1"  value="0" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            How long did it take to travel to the depot? (Leave BLANK if SOLUS)HOURS
+                                        <td>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <input  size="2"class="form-control" type="number" id="number20" value="0" />
+                                                        <label for="number20">Hours</label>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <input  size="2"class="form-control" type="number" id="number21" value="0" />
+                                                        <label for="number21">Minutes</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            How many miles from the depot (or home if SOLUS) to the first drop?
+
+                                        <td> <input  size="2"class="form-control" type="number" id="number2"  value="0" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            How long did it take to travel to your first drop?
+                                        <td>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <label for="number22">Hours</label>
+                                                        <input  size="2"class="form-control" type="number" id="number22" value="0"  />
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label for="number23">Minutes</label>
+                                                        <input  size="2"class="form-control" type="number" id="number23" value="0"  />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>How many miles did you travel delivering parcels?
+
+                                            </p>
+                                        </td>
+                                        <td> <input  size="2"class="form-control" type="number" id="number3" value="0"  /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            How much time did you spend delivering from the first to last
+                                            drop?
+                                        <td>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-6 py-2">
+
+                                                        <input  size="2"class="form-control" type="number" id="number14"
+                                                            name="number14"  value="0" /><label class="text-capitalize"
+                                                            for="number14">Hours</label>
+                                                    </div>
+                                                    <div class="col-6 py-2">
+
+                                                        <input  size="2"class="form-control" type="number" id="number15"
+                                                            name="number15"  value="0" ><label class="text-capitalize"
+                                                            for="number15">Minutes</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            How many miles from the last delivery to home?
+                                        </td>
+                                        <td><input  size="2"class="form-control" type="number" id="number4"  value="0" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            How long did it take to travel from your last drop to home?
+
+                                        </td>
+                                        <td>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <input  size="2"class="form-control" type="number" id="number24"  value="0" />
+                                                        <label for="number24">Hours</label>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <input  size="2"class="form-control" type="number" id="number25" value="0"  />
+                                                        <label for="number25">Minutes</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </table>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card my-4">
+                        <div class="card-body">
+                            <div class="p-2 bg-body-secondary rounded-2">
+                                <h5 class="card-title">
+                                    SECTION 2 - SCANNING & LOADING
+                                </h5>
+                            </div>
+
+                            <div class="card-text">
+                                <p>
+                                    Evri calculate that loading time takes 1 minute for every 3 parcels you scan &
+                                    load BUT this does not include any waiting time.
+                                </p>
+                                
+
+
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <input  size="2"class="form-control" type="number" id="number5"  value="0" />
+                                            <label for="number5">Hours</label>
+                                        </div>
+                                        <div class="col-6">
+                                            <input  size="2"class="form-control" type="number" id="number6" value="0" />
+                                            <label for="number6">Minutes</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p><i>NOTE: Section will be added here soon so you can provide your own time.</i></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card my-4">
+                        <div class="card-body">
+                            <div class="p-2 bg-body-secondary rounded-2">
+                                <h5 class="card-title">
+                                    SECTION 3 - DELIVERIES & COLLECTIONS
+                                </h5>
+                            </div>
+                            <p>The following section asks how many parcels you delivered and collected then
+                                automatically applies a formula to break those down into bandings.</p>
+
+                            <div class="card-text">
+                                <div class="D selectt2">
+                                    <p>How many parcels did you DELIVER in total?
+                                        <input  size="2"class="form-control" type="number" id="number7" value="0" />
+                                    </p>
+                                    <p>How many parcels did you COLLECT in total?
+                                        <input  size="2"class="form-control" type="number" id="number16"  value="0" />
+                                    </p>
+                                </div>
+                                <div class="D selectt">
+                                    <p>How many Postable parcels did you deliver?
+                                        <input  size="2"class="form-control" type="number" id="number8" value="0" />
+                                    </p>
+                                    <p>How many Small Packets did you deliver?
+                                        <input  size="2"class="form-control" type="number" id="number9" value="0" />
+                                    </p>
+                                    <p>How many Packets did you deliver?
+                                        <input  size="2"class="form-control" type="number" id="number10" value="0" />
+                                    </p>
+                                    <p>How many Standard parcels did you deliver?
+                                        <input  size="2"class="form-control" class="form-control" type="number" id="number11" value="0" />
+                                    </p>
+                                    <p>How many Heavy and Heavy/Large parcels did you deliver?
+                                        <input  size="2"class="form-control" type="number" id="number12" value="0" />
+                                    </p>
+                                    <p>How many Collections did you do?
+                                        <input  size="2"class="form-control" type="number" id="number12" value="0" />
+                                    </p>
+
+
+                                </div>
+                                <p>What is your STANDARD parcel rate? (in PENCE)
+                                    <input  size="2"class="form-control" type="number" id="number13" value="86" step="1"  />
+                                </p>
+                                <script type="text/javascript">
+                                    $(document).ready(function () {
+                                        $('input[type="checkbox"]').click(function () {
+                                            var inputValue = $(this).attr("value");
+                                            $("." + inputValue).toggle();
+                                        });
+                                    }); 
+                                </script>
+                            </div>
+                            <p><i>NOTE: Section will be added here soon so you can provide your own parcel
+                                breakdown.</i></p>
+                        </div>
+                    </div>
+                    <div class="card my-4">
+                        <div class="card-body">
+                            <div class="p-2 bg-body-secondary rounded-2">
+                                <h5 class="card-title">
+                                    SECTION 4 - EXPENSES
+
+                                </h5>
+                            </div>
+                            <p>These are the costs for running your vehicle and providing a phone with data.</p>
+                            <p><i>This calculator estimates <strong>£0.50 per mile</strong> for the vehicle and
+                                    <strong>£1 per day</strong> for the phone with data.</i></p>
+                            <div class="card-text">
+
+                                <p>VEHICLE<br>Purchase/Hire costs per month?
+                                    <input  size="2"class="form-control" type="number" id="number8" value="0" />
+                                </p>
+                                <p>Insurance (S&D + Evri topup OR Hire and Reward) cost per month?
+                                    <input  size="2"class="form-control" type="number" id="number8" value="0" />
+                                </p>
+                                <p>Road Tax per year?
+                                    <input  size="2"class="form-control" type="number" id="number8" value="0" />
+                                </p>
+                                <p>Fuel per month?
+                                    <input  size="2"class="form-control" type="number" id="number8" value="0" />
+                                </p>
+                                <p>MOT per year?
+                                    <input  size="2"class="form-control" type="number" id="number8" value="0" />
+                                </p>
+                                <p>Breakdown Cover per year?
+                                    <input  size="2"class="form-control" type="number" id="number8" value="0" />
+                                </p>
+                                <p>Servicing per year?
+                                    <input  size="2"class="form-control" type="number" id="number8" value="0" >
+                                </p>
+                                <p>Repairs and Maintenance per year?
+                                    <input  size="2"class="form-control" type="number" id="number8" value="0" />
+                                </p>
+                                <p>PHONE<br>Purchase cost & data per month?
+                                    <input  size="2"class="form-control" type="number" id="number8" value="0" >
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <input  size="2"class="btn btn-success" type="button" id="Calculate" value="Calculate"
+                                    onclick="calcform()" />
+                                <input  size="2"class="btn btn-warning" type="reset" id="reset" value="Clear" />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </form>
+                <p>NOTE: Bonus including ETA, SOS and Collection Bonus are not included yet but will be added in the
+                    next
+                    version.</p>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-sm-12 col-xs-12">
+                <div class="card my-4">
+                    <div class="card-body">
+                        <div class="p-2 bg-body-secondary rounded-2">
+                            <h5 class="card-title">
+                                Results
+                            </h5>
+                        </div>
+                        <table class="table">
+                            <tr>
+                                <td class="text-capitalize">pay per hour</td>
+                                <td><input  size="2"class="form-control" type="number" id="pph"/></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Total mileage</td>
+                                <td><input  size="2"class="form-control" type="number" id="mileage" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Time spent travelling NOT including delivery time (actual)
+                                </td>
+                                <td><input  size="2"class="form-control" type="number" id="travelt" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Postables (estimated)</td>
+                                <td><input  size="2"class="form-control" type="number" id="pstc" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Small Packets (estimated)</td>
+                                <td><input  size="2"class="form-control" type="number" id="spc" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Packets (estimated)</td>
+                                <td><input  size="2"class="form-control" type="number" id="pc" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Standards & Hanging Garments (estimated) </td>
+                                <td><input  size="2"class="form-control" type="number" id="sc" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Heavy and H/L (estimated)</td>
+                                <td><input  size="2"class="form-control" type="number" id="hc" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Collections (actual) </td>
+                                <td><input  size="2"class="form-control" type="number" id="cp" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">PRETOTAL</td>
+                                <td><input  size="2"class="form-control" type="number" id="tdc" /></td>
+                            </tr>
+                            <tr>
+                                <td>SPCP </td>
+                                <td><input  size="2"class="form-control" type="number" id="spcp" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">ADJTOTAL</td>
+                                <td><input  size="2"class="form-control" type="number" id="atdc" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Time Scanning </td>
+                                <td><input  size="2"class="form-control" type="number" id="slte" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Delivery Time </td>
+                                <td><input  size="2"class="form-control" type="number" id="dt" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Total Working Time</td>
+                                <td><input  size="2"class="form-control" type="number" id="wt" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Postable Rate</td>
+                                <td><input  size="2"class="form-control" type="number" id="rpst" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Small Packet Rate</td>
+                                <td><input  size="2"class="form-control" type="number" id="rsp" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Packet Rate</td>
+                                <td><input  size="2"class="form-control" type="number" id="rp" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Heavy & H/L Rate</td>
+                                <td><input  size="2"class="form-control" type="number" id="rh" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Collection Rate</td>
+                                <td><input  size="2"class="form-control" type="number" id="rc" /></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Expenses</td>
+                                <td><input  size="2"class="form-control" type="number" id="ex"/></td>
+                            </tr>
+                            <tr>
+                                <td class="text-capitalize">Parcel Pay</td>
+                                <td><input  size="2"class="form-control" type="number" id="pp"/></td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
